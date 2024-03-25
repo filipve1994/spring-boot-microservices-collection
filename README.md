@@ -61,7 +61,6 @@ collection of microservices with spring boot
 - https://github.com/clevertech/email-service
 - https://github.com/MichelliBrito/ms-email
 - https://github.com/abimaelmartell/goverify
-- https://github.com/PatriciAlves/microservice-email
 - https://github.com/sayeed1999/home
 - https://github.com/Rian-Ismael/Microservices/tree/main/microservice
 - https://github.com/devxsb/spring-boot-microservices
