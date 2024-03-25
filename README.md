@@ -57,9 +57,6 @@ collection of microservices with spring boot
 - https://github.com/vvkrajput/QUIZ_APIGateway
 - https://github.com/guilhermeozana/jobboard-backend
 - https://github.com/Trafl/ClinicaMicrosservice
-- https://github.com/andbin/spring-boot2-pebble-basic-demo
-- https://github.com/clevertech/email-service
-- https://github.com/MichelliBrito/ms-email
 - https://github.com/abimaelmartell/goverify
 - https://github.com/sayeed1999/home
 - https://github.com/Rian-Ismael/Microservices/tree/main/microservice
