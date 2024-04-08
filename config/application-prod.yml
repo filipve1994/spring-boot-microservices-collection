@@ -1,0 +1,6 @@
+#spring:
+#  cache:
+#    jcache:
+#      provider:
+#  hazelcast:
+#    config:

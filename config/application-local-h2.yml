@@ -1,0 +1,18 @@
+spring:
+  datasource:
+#    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        # https://www.baeldung.com/spring-boot-h2-jdbcsqlsyntaxerrorexception-expected-identifier
+        globally_quoted_identifiers: true
+  h2:
+    console:
+      enabled: true
+      path: /h2

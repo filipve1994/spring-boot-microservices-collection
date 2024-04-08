@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: employee-service
+
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${ENV_HOSTNAME:localhost}:${MM_SD_PORT:8761}/eureka

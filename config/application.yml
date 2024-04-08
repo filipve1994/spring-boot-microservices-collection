@@ -1,1 +1,53 @@
+# All configuration in root application.yml will be added to every connected application
 
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${ENV_HOSTNAME:localhost}:${MM_SD_PORT:8761}/eureka
+
+springdoc:
+  swagger-ui:
+    path: /swagger
+
+# Startup logging
+
+startupinfo:
+  startupLogMessageSuccess: "UPM-COMPONENT STARTED"
+
+management:
+  endpoint:
+    logfile:
+      enabled: true
+      external-file: ./${spring.application.name}.log
+
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+      domain: ${spring.application.name}
+
+app:
+  cors:
+    allowed-origins:
+      #    - "http://localhost:4200"
+      - "*"
+    allowed-headers:
+      - "Access-Control-Allow-Headers"
+      - "Access-Control-Allow-Origin"
+      - "Access-Control-Request-Method"
+      - "Access-Control-Request-Headers"
+      - "Origin"
+      - "Cache-Control"
+      - "Content-Type"
+      - "Authorization"
+      - "Accept-Language"
+      - "Content-Language"
+    allowed-methods:
+      - "POST"
+      - "GET"
+      - "PUT"
+      - "PATCH"
+      - "DELETE"

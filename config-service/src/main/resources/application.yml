@@ -1,0 +1,104 @@
+server:
+  address: ${UPM_CONFIG_SERVER_URL:localhost}
+#  port: ${UPM_CONFIG_SERVER_PORT:10010}
+  port: ${UPM_CONFIG_SERVER_PORT:8088}
+
+
+spring:
+  application:
+    name: config-service
+  main:
+    banner-mode: console
+  banner:
+    location: "classpath:banner.txt"
+  jmx:
+    enabled: true
+  security:
+    user:
+      name: root
+      password: s3cr3t
+  cloud:
+    config:
+      server:
+        git:
+          # same level as project root
+          # https://cloud.spring.io/spring-cloud-config/reference/html/#_version_control_backend_filesystem_use
+          basedir: ${CONFIG_BASEDIR:./conf/configfoldertoclone/}
+          uri: ${CONFIG_REPO_URI:https://git.infrabel.be/TrafficManagement/upm/microservices/configuration/upm-config-repository.git}
+          search-paths: '{application}'
+          skip-ssl-validation: true
+          default-label: ${BRANCH:master}
+          # Also there is this spring.cloud.config.server.git.clone-on-start = true/false.
+          # If this is true when the application restarts the folder contents will be deleted and cloned again.
+          # You might want to set this to false if you want the files to be kept between restarts.
+          # Also if you want to have the fallback available before the first start,
+          # you just have to clone the git project locally, and put that path as the basedir.
+          #          clone-on-start: true
+          clone-on-start: false
+          force-pull: true
+          # TODO do not commit username and password
+          username: ${CONFIG_REPO_USER:sys_arte2svn}
+          password: ${CONFIG_REPO_PASSWORD:ecAdMpAB2}
+#          timeout: 15
+#          order: 2
+#          refresh-rate: 30
+
+#  boot:
+#    admin:
+#      client:
+#        url: http://${UPM_MANAGEMENT_SERVER_URL:localhost}:${UPM_MANAGEMENT_SERVER_PORT:10020}
+##        url: http://${ENV_HOSTNAME:localhost}:${MM_MS_PORT:10020}
+
+
+
+#  https://www.baeldung.com/spring-cloud-configuration#2-key-management
+encrypt:
+  # To use symmetric cryptography, you simply have to set the property ?encrypt.key' in your application.properties to a secret of your choice.
+  # Alternatively you can pass-in the environment variable ENCRYPT_KEY.
+  #
+  # For asymmetric cryptography, you can set ?encrypt.key' to a PEM-encoded string value or configure a keystore to use.
+  #  key: s3cretK3y
+  #  salt: deadbeef
+  #  fail-on-error: true
+  key-store:
+    location: classpath:/config-server.jks
+    password: my-s70r3-s3cr3t
+    alias: config-server-key
+    secret: my-k34-s3cr3t
+#    type:
+#  rsa:
+#    salt: deadbeef
+#    algorithm: DEFAULT
+#    strong: false
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "security"
+
+  cloud:
+    config:
+      username: user
+      password: password
+
+  # TODO when enabling security in the distant future, do not forget to ask to create the necessary environment variables on the server to link them
+  #basic auth creddentials
+  security:
+    user:
+      name: ${CONFIG_SERVER_USERNAME:user}
+      password: ${CONFIG_SERVER_PASSWORD:password}
+
+  # TODO when enabling security in the distant future, do not forget to ask to create the necessary environment variables on the server to link them
+  boot:
+    admin:
+      client:
+        username: ${UPM_MANAGEMENT_SERVER_ADMIN_USERNAME:user}
+        password: ${UPM_MANAGEMENT_SERVER_ADMIN_PASSWORD:password}
+        #configs to give secured server info
+        instance:
+          metadata:
+            user:
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}

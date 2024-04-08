@@ -1,0 +1,15 @@
+spring:
+  datasource:
+#    url: jdbc:oracle:thin@[hostname]:[port]/[DB servicename]
+    url: jdbc:oracle:thin@${ORACLE_DB:localhost}:1521/${SERVICENAME:testdb}
+    username: ${ORACLESQL_USER:root}
+    password: ${ORACLESQL_PASSWORD:dbpassword}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+#      naming:
+#        implicit-strategy:
+#        physical-strategy:
+
+#https://redstack.wordpress.com/2023/02/03/a-first-spring-boot-microservice-with-oracle/
+# https://juarezjunior.medium.com/java-persistence-with-spring-boot-3-spring-data-jpa-with-hibernate-and-the-oracle-database-23c-9c0946d4838f

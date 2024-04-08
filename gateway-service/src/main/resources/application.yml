@@ -1,0 +1,29 @@
+spring:
+  config:
+    import: "optional:configserver:http://config-service:8088"
+    activate:
+      on-profile: docker
+---
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: "optional:configserver:http://localhost:8088"
+
+springdoc:
+  swagger-ui:
+    path: /swagger
+
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    instance-id: null
+
+server:
+  address: localhost
+eureka:
+  instance:
+    hostname: localhost
+management:
+  tracing:
+    enabled: false

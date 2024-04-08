@@ -1,0 +1,16 @@
+server:
+  address: ${UPM_MANAGEMENT_SERVER_URL:localhost}
+  port: ${UPM_MANAGEMENT_SERVER_PORT:10020}
+
+spring:
+  application:
+    name: admin-service
+  main:
+    banner-mode: console
+  banner:
+    location: "classpath:banner.txt"
+  jmx:
+    enabled: true
+  config:
+    import:
+      - optional:configserver:http://${ENV_HOSTNAME:localhost}:${MM_CS_PORT:8088}

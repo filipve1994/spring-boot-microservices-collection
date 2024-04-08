@@ -1,0 +1,11 @@
+${Ansi.GREEN}  __  __     ___    __  __    _____     ___      ___      ___    __   __    ___      ___
+${Ansi.GREEN} |  \/  |   / __|  |  \/  |  |_   _|   / __|    | __|    | _ \   \ \ / /   | __|    | _ \
+${Ansi.GREEN} | |\/| |  | (_ |  | |\/| |    | |     \__ \    | _|     |   /    \ V /    | _|     |   /
+${Ansi.GREEN} |_|__|_|   \___|  |_|__|_|   _|_|_    |___/    |___|    |_|_\    _\_/_    |___|    |_|_\
+${Ansi.GREEN} _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _| """"| _|"""""| _|"""""|
+${Ansi.GREEN} "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
+
+${Ansi.RED} :: Spring Boot${spring-boot.formatted-version} :: ${Ansi.DEFAULT}
+${Ansi.RED} title: ${spring.application.name:UPMMGMTSERVER}, Version: ${application.version:1.0.0}, Server: ${server.address:localhost}:${server.port}, Active Profiles: ${spring.profiles.active}
+
+${Ansi.DEFAULT}
